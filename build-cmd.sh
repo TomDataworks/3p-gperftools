@@ -29,15 +29,15 @@ pushd "$SOURCE_DIR"
     case "$AUTOBUILD_PLATFORM" in
         "windows")
             load_vsvars
+            #build_sln "google-perftools.sln" "Debug|Win32" "zlibstat"
+            #build_sln "google-perftools.sln" "Release|Win32" "zlibstat"
             
-            pushd contrib/masmx86
-                ./bld_ml32.bat
-            popd
-            
-            build_sln "contrib/vstudio/vc10/zlibvc.sln" "Debug|Win32" "zlibstat"
-            build_sln "contrib/vstudio/vc10/zlibvc.sln" "Release|Win32" "zlibstat"
+            build_sln "google-perftools.sln" "Debug|Win32"
+            build_sln "google-perftools.sln" "Release|Win32"
+
             mkdir -p "$stage/lib/debug"
             mkdir -p "$stage/lib/release"
+
             cp "contrib/vstudio/vc10/x86/ZlibStatDebug/zlibstat.lib" \
                 "$stage/lib/debug/zlibd.lib"
             cp "contrib/vstudio/vc10/x86/ZlibStatRelease/zlibstat.lib" \

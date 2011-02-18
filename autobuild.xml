@@ -15,6 +15,29 @@
       <string>google-perftools</string>
       <key>platforms</key>
       <map>
+        <key>common</key>
+        <map>
+          <key>configurations</key>
+          <map>
+            <key>default</key>
+            <map>
+              <key>build</key>
+              <map>
+                <key>command</key>
+                <string>bash</string>
+                <key>options</key>
+                <array>
+                  <string>-c</string>
+                  <string>../build-cmd.sh</string>
+                </array>
+              </map>
+              <key>name</key>
+              <string>default</string>
+            </map>
+          </map>
+          <key>name</key>
+          <string>common</string>
+        </map>
         <key>darwin</key>
         <map>
           <key>build_directory</key>
