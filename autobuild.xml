@@ -10,7 +10,7 @@
       <key>license</key>
       <string>BSD</string>
       <key>license_file</key>
-      <string>google-perftools-1.7/COPYING</string>
+      <string>LICENSES/google-perftools.txt</string>
       <key>name</key>
       <string>google-perftools</string>
       <key>platforms</key>
@@ -75,6 +75,11 @@
               <string>default</string>
             </map>
           </map>
+          <key>manifest</key>
+          <array>
+            <string>lib/release/libprofiler.so*</string>
+            <string>lib/release/libtcmalloc.so*</string>
+          </array>
           <key>name</key>
           <string>linux</string>
         </map>

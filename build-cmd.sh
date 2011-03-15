@@ -46,22 +46,20 @@ pushd "$SOURCE_DIR"
             cp {zlib.h,zconf.h} "$stage/include/zlib"
         ;;
         "darwin")
-            ./configure --prefix="$stage"
-            make
-            make install
-			mkdir -p "$stage/include/zlib"
-			mv "$stage/include/"*.h "$stage/include/zlib/"
         ;;
         "linux")
             CFLAGS="-m32" CXXFLAGS="-m32" ./configure --prefix="$stage"
             make
             make install
-			mkdir -p "$stage/include/zlib"
-			mv "$stage/include/"*.h "$stage/include/zlib/"
+            pushd "$stage"
+                mv lib release
+                mkdir -p lib
+                mv release lib
+            popd
         ;;
     esac
     mkdir -p "$stage/LICENSES"
-    tail -n 31 README > "$stage/LICENSES/zlib.txt"
+    cp COPYING  "$stage/LICENSES/$PROJECT.txt"
 popd
 
 pass
