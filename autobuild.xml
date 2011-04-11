@@ -78,7 +78,8 @@
           <key>manifest</key>
           <array>
             <string>lib/release/libprofiler.so*</string>
-            <string>lib/release/libtcmalloc.so*</string>
+            <string>lib/release/libtcmalloc*</string>
+	    <string>lib/debug/libtcmalloc*</string>
           </array>
           <key>name</key>
           <string>linux</string>
