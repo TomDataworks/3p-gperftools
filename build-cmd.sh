@@ -30,8 +30,13 @@ pushd "$SOURCE_DIR"
         "windows")
             load_vsvars
             
+			
             build_sln "google-perftools.sln" "Debug|Win32"
             build_sln "google-perftools.sln" "Release|Win32"
+			
+			mkdir $stage/lib
+			mkdir $stage/lib/release
+			mkdir $stage/lib/debug
 						
 			cp Release/libtcmalloc_minimal.dll \
 				$stage/lib/release
