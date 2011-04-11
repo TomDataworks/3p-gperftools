@@ -29,21 +29,19 @@ pushd "$SOURCE_DIR"
     case "$AUTOBUILD_PLATFORM" in
         "windows")
             load_vsvars
-            #build_sln "google-perftools.sln" "Debug|Win32" "zlibstat"
-            #build_sln "google-perftools.sln" "Release|Win32" "zlibstat"
             
             build_sln "google-perftools.sln" "Debug|Win32"
             build_sln "google-perftools.sln" "Release|Win32"
+						
+			cp Release/libtcmalloc_minimal.dll \
+				$stage/lib/release
+			cp Release/libtcmalloc_minimal.lib \
+				$stage/lib/release
 
-            mkdir -p "$stage/lib/debug"
-            mkdir -p "$stage/lib/release"
-
-            cp "contrib/vstudio/vc10/x86/ZlibStatDebug/zlibstat.lib" \
-                "$stage/lib/debug/zlibd.lib"
-            cp "contrib/vstudio/vc10/x86/ZlibStatRelease/zlibstat.lib" \
-                "$stage/lib/release/zlib.lib"
-            mkdir -p "$stage/include/zlib"
-            cp {zlib.h,zconf.h} "$stage/include/zlib"
+			cp Debug/libtcmalloc_minimal-debug.dll \
+				$stage/lib/debug
+			cp Debug/libtcmalloc_minimal-debug.lib \
+				$stage/lib/debug
         ;;
         "darwin")
         ;;
