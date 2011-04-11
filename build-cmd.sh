@@ -58,6 +58,8 @@ pushd "$SOURCE_DIR"
                 mv lib release
                 mkdir -p lib
                 mv release lib
+		mkdir lib/debug
+		mv lib/release/*debug* lib/debug
             popd
         ;;
     esac
