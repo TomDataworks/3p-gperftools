@@ -597,6 +597,10 @@ static void TestOneNew(void* (*func)(size_t)) {
       fprintf(LOGSTREAM, "allocation should not have failed.\n");
       abort();
     }
+
+	uintptr_t p = reinterpret_cast<uintptr_t>(ptr);
+	CHECK((p % 16) == 0);
+
   } catch (...) {
     fprintf(LOGSTREAM, "allocation threw unexpected exception.\n");
     abort();

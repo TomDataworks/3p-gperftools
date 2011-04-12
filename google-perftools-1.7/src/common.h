@@ -75,7 +75,7 @@ static const size_t kMaxThreadCacheSize = 2 << 20;
 
 static const size_t kPageSize   = 1 << kPageShift;
 static const size_t kMaxSize    = 8u * kPageSize;
-static const size_t kAlignment  = 16;
+static const size_t kAlignment  = 8;
 static const size_t kLargeSizeClass = 0;
 // For all span-lengths < kMaxPages we keep an exact-size list.
 static const size_t kMaxPages = 1 << (20 - kPageShift);
