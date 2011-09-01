@@ -8,7 +8,7 @@ set -x
 set -e
 
 PROJECT="google-perftools"
-VERSION="1.7"
+VERSION="1.8.3"
 SOURCE_DIR="$PROJECT-$VERSION"
 
 if [ -z "$AUTOBUILD" ] ; then 
@@ -29,26 +29,39 @@ pushd "$SOURCE_DIR"
     case "$AUTOBUILD_PLATFORM" in
         "windows")
             load_vsvars
-            
 			
             build_sln "google-perftools.sln" "Debug|Win32"
             build_sln "google-perftools.sln" "Release|Win32"
 			
-			mkdir $stage/lib
-			mkdir $stage/lib/release
-			mkdir $stage/lib/debug
+            mkdir $stage/lib
+            mkdir $stage/lib/release
+            mkdir $stage/lib/debug
 						
-			cp Release/libtcmalloc_minimal.dll \
-				$stage/lib/release
-			cp Release/libtcmalloc_minimal.lib \
-				$stage/lib/release
+            cp Release/libtcmalloc_minimal.dll \
+                $stage/lib/release
+            cp Release/libtcmalloc_minimal.lib \
+                $stage/lib/release
 
-			cp Debug/libtcmalloc_minimal-debug.dll \
-				$stage/lib/debug
-			cp Debug/libtcmalloc_minimal-debug.lib \
-				$stage/lib/debug
+            cp Debug/libtcmalloc_minimal-debug.dll \
+                $stage/lib/debug
+            cp Debug/libtcmalloc_minimal-debug.lib \
+                $stage/lib/debug
         ;;
         "darwin")
+            opts='-arch i386 -iwithsysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5'
+            export CFLAGS="$opts"
+            export CXXFLAGS="$opts"
+            export LDFLAGS="$opts"
+            ./configure --prefix="$stage"
+            make
+            make install
+            pushd "$stage"
+                mv lib release
+                mkdir -p lib
+                mv release lib
+                mkdir lib/debug
+                mv lib/release/*debug* lib/debug
+            popd
         ;;
         "linux")
             CFLAGS="-m32" CXXFLAGS="-m32" ./configure --prefix="$stage"
@@ -58,8 +71,8 @@ pushd "$SOURCE_DIR"
                 mv lib release
                 mkdir -p lib
                 mv release lib
-		mkdir lib/debug
-		mv lib/release/*debug* lib/debug
+                mkdir lib/debug
+                mv lib/release/*debug* lib/debug
             popd
         ;;
     esac
