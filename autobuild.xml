@@ -35,6 +35,10 @@
               <string>default</string>
             </map>
           </map>
+          <key>manifest</key>
+          <array>
+            <string>include</string>
+          </array>
           <key>name</key>
           <string>common</string>
         </map>
@@ -55,6 +59,13 @@
               <string>default</string>
             </map>
           </map>
+          <key>manifest</key>
+          <array>
+            <string>lib/debug/*.a</string>
+            <string>lib/debug/*so*</string>
+            <string>lib/release/*so*</string>
+            <string>lib/release/*.a</string>
+          </array>
           <key>name</key>
           <string>darwin</string>
         </map>
@@ -77,9 +88,10 @@
           </map>
           <key>manifest</key>
           <array>
-            <string>lib/release/libprofiler.so*</string>
-            <string>lib/release/libtcmalloc*</string>
-	    <string>lib/debug/libtcmalloc*</string>
+            <string>lib/release/*.a</string>
+            <string>lib/release/*so*</string>
+            <string>lib/debug/*so*</string>
+            <string>lib/debug/*.a</string>
           </array>
           <key>name</key>
           <string>linux</string>
