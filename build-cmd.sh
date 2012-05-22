@@ -7,8 +7,8 @@ set -x
 # make errors fatal
 set -e
 
-PROJECT="google-perftools"
-VERSION="1.8.3"
+PROJECT="gperftools"
+VERSION="2.0"
 SOURCE_DIR="$PROJECT-$VERSION"
 
 if [ -z "$AUTOBUILD" ] ; then 
@@ -30,8 +30,8 @@ pushd "$SOURCE_DIR"
         "windows")
             load_vsvars
 			
-            build_sln "google-perftools.sln" "Debug|Win32"
-            build_sln "google-perftools.sln" "Release|Win32"
+            build_sln "gperftools.sln" "Debug|Win32"
+            build_sln "gperftools.sln" "Release|Win32"
 			
             
             mkdir -p $stage/lib/release

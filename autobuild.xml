@@ -10,9 +10,9 @@
       <key>license</key>
       <string>BSD</string>
       <key>license_file</key>
-      <string>LICENSES/google-perftools.txt</string>
+      <string>LICENSES/gperftools.txt</string>
       <key>name</key>
-      <string>google-perftools</string>
+      <string>gperftools</string>
       <key>platforms</key>
       <map>
         <key>common</key>
@@ -122,7 +122,7 @@
         </map>
       </map>
       <key>version</key>
-      <string>1.8.3</string>
+      <string>2.0</string>
     </map>
     <key>type</key>
     <string>autobuild</string>
