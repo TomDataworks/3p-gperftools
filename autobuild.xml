@@ -120,6 +120,30 @@
           <key>name</key>
           <string>windows</string>
         </map>
+        <key>windows64</key>
+        <map>
+          <key>build_directory</key>
+          <string>stage</string>
+          <key>configurations</key>
+          <map>
+            <key>default</key>
+            <map>
+              <key>build</key>
+              <map>
+              </map>
+              <key>default</key>
+              <string>true</string>
+              <key>name</key>
+              <string>default</string>
+            </map>
+          </map>
+          <key>manifest</key>
+          <array>
+            <string>lib</string>
+          </array>
+          <key>name</key>
+          <string>windows</string>
+        </map>
       </map>
       <key>version</key>
       <string>2.1</string>

@@ -47,6 +47,30 @@ pushd "$SOURCE_DIR"
             cp Debug/libtcmalloc_minimal-debug.lib \
                 $stage/lib/debug
         ;;
+        "windows64")
+            load_vsvars
+			
+            build_sln "gperftools.sln" "Debug|x64"
+            build_sln "gperftools.sln" "Release|x64"
+			
+            
+            mkdir -p $stage/lib/release
+            mkdir -p $stage/lib/debug
+						
+            cp x64/Release/libtcmalloc_minimal.dll \
+                $stage/lib/release
+            cp x64/Release/libtcmalloc_minimal.pdb \
+                $stage/lib/release
+            cp x64/Release/libtcmalloc_minimal.lib \
+                $stage/lib/release
+
+            cp x64/Debug/libtcmalloc_minimal-debug.dll \
+                $stage/lib/debug
+            cp x64/Debug/libtcmalloc_minimal.pdb \
+                $stage/lib/debug
+            cp x64/Debug/libtcmalloc_minimal-debug.lib \
+                $stage/lib/debug
+        ;;
         "darwin")
             opts='-arch i386 -iwithsysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5'
             export CFLAGS="$opts"
