@@ -8,7 +8,7 @@ set -x
 set -e
 
 PROJECT="gperftools"
-VERSION="2.1"
+VERSION="2.2"
 SOURCE_DIR="$PROJECT-$VERSION"
 
 if [ -z "$AUTOBUILD" ] ; then 
@@ -30,8 +30,8 @@ pushd "$SOURCE_DIR"
         "windows")
             load_vsvars
 			
-            build_sln "gperftools.sln" "Debug|Win32"
-            build_sln "gperftools.sln" "Release|Win32"
+            #build_sln "gperftools.sln" "Debug|Win32"
+            #build_sln "gperftools.sln" "Release|Win32"
 			
             
             mkdir -p $stage/lib/release
