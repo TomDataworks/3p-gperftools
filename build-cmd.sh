@@ -8,8 +8,8 @@ set -x
 set -e
 
 PROJECT="gperftools"
-VERSION="2.2"
-SOURCE_DIR="$PROJECT-$VERSION"
+VERSION="2.4rc"
+SOURCE_DIR="$PROJECT"
 
 if [ -z "$AUTOBUILD" ] ; then 
     fail
@@ -25,13 +25,16 @@ eval "$("$AUTOBUILD" source_environment)"
 set -x
 
 stage="$(pwd)/stage"
+
+echo "${VERSION}" > "${stage}/VERSION.txt"
+
 pushd "$SOURCE_DIR"
     case "$AUTOBUILD_PLATFORM" in
         "windows")
             load_vsvars
 			
-            #build_sln "gperftools.sln" "Debug|Win32"
-            #build_sln "gperftools.sln" "Release|Win32"
+            build_sln "gperftools.sln" "Debug|Win32"
+            build_sln "gperftools.sln" "Release|Win32"
 			
             
             mkdir -p $stage/lib/release
