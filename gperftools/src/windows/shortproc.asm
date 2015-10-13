@@ -31,9 +31,8 @@
 ; Author: Scott Francis
 ;
 ; Unit tests for PreamblePatcher
- ifndef X64
+ 
 .MODEL small
- endif
  
 .CODE
 
