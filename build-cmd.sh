@@ -8,7 +8,7 @@ set -x
 set -e
 
 PROJECT="gperftools"
-VERSION="2.4rc"
+VERSION="2.4.6627f92"
 SOURCE_DIR="$PROJECT"
 
 if [ -z "$AUTOBUILD" ] ; then 
