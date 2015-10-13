@@ -149,13 +149,13 @@ static void NTAPI on_tls_callback(HINSTANCE h, DWORD dwReason, PVOID pv) {
 // for the linker /INCLUDE:symbol pragmas above.
 extern "C" {
 // This tells the linker to run these functions.
-#pragma section(".CRT$XLY", read)
-_declspec(allocate(".CRT$XLY")) \
+#pragma data_seg(push, old_seg)
+#pragma data_seg(".CRT$XLB")
 void (NTAPI *p_thread_callback_tcmalloc)(
     HINSTANCE h, DWORD dwReason, PVOID pv) = on_tls_callback;
-#pragma section(".CRT$XTU", read)
-_declspec(allocate(".CRT$XTU")) \
+#pragma data_seg(".CRT$XTU")
 int (*p_process_term_tcmalloc)(void) = on_process_term;
+#pragma data_seg(pop, old_seg)
 }  // extern "C"
 
 #else  // #ifdef _MSC_VER  [probably msys/mingw]
