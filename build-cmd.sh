@@ -33,8 +33,8 @@ pushd "$SOURCE_DIR"
         "windows")
             load_vsvars
 			
-            build_sln "gperftools.sln" "Debug|Win32"
-            build_sln "gperftools.sln" "Release|Win32"
+            build_sln "gperftools.sln" "Debug" "Win32"
+            build_sln "gperftools.sln" "Release" "Win32"
 			
             
             mkdir -p $stage/lib/release
@@ -53,8 +53,8 @@ pushd "$SOURCE_DIR"
         "windows64")
             load_vsvars
 			
-            build_sln "gperftools.sln" "Debug|x64"
-            build_sln "gperftools.sln" "Release|x64"
+            build_sln "gperftools.sln" "Debug" "x64"
+            build_sln "gperftools.sln" "Release" "x64"
 			
             
             mkdir -p $stage/lib/release

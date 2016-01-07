@@ -113,10 +113,8 @@
           <array>
             <string>lib/debug/*.dll</string>
             <string>lib/debug/*.lib</string>
-            <string>lib/debug/*.pdb</string>
             <string>lib/release/*.dll</string>
             <string>lib/release/*.lib</string>
-            <string>lib/release/*.pdb</string>
           </array>
           <key>name</key>
           <string>windows</string>
